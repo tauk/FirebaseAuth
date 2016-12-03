@@ -9,11 +9,16 @@
 import UIKit
 
 class AfterLoginViewController: UIViewController {
-
+    
+    var userName = ""
+    @IBOutlet weak var lblUserName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        lblUserName.text = "Welcome \(userName)"
     }
 
     override func didReceiveMemoryWarning() {

@@ -95,6 +95,14 @@ class ViewController: UIViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "showAfterLoginView") {
+            if let nextController = segue.destination as? AfterLoginViewController {
+                nextController.userName = txtUsername.text!
+            }
+        }
+    }
+    
     //reusable method to show alert box
     private func showAlert(titleText:String, messageText:String) {
         let errorAlert = UIAlertController(title: titleText, message:messageText,

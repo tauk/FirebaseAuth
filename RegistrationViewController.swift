@@ -39,21 +39,25 @@ class RegistrationViewController: UIViewController {
         let confirmPassword = tfConfirmPassword.text! as String
         let email = tfEmail.text! as String
         
+        //do some validations which are required before registration
         if (userName == "" || password == "" || confirmPassword == "" || email == "") {
             showAlert(titleText: "User Error!", messageText: "Please fill all textboxes")
             return
         }
         
+        //check if passwords are less than 6 chars
         if (userName.characters.count < 5 || password.characters.count < 5 ||
             confirmPassword.characters.count < 5) {
             showAlert(titleText: "User Error", messageText: "User name and password must be at least 5 characters or more")
             return
         }
         
+        //check if passwords are matching
         if (password != confirmPassword) {
             showAlert(titleText: "User Error!", messageText: "Passwords not matching!")
             return
         }
+        
         
         //get a database reference 
         let dbReference = FIRDatabase.database().reference()
