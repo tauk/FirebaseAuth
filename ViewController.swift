@@ -15,23 +15,36 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var lblStatus: UILabel!
     
+    @IBOutlet weak var regNowimageView: UIImageView!
+    
     override func viewWillAppear(_ animated: Bool) {
         //move the text fields away from the center
         txtUsername.center.x += view.bounds.width
         txtPassword.center.x -= view.bounds.width
+        
+        lblStatus.center.y -= view.bounds.width
+        
+        regNowimageView.alpha = 0.0
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         
         UIView.animate(withDuration: 1.5, delay: 1.0,
-                                   usingSpringWithDamping: 0.5,
-                                   initialSpringVelocity: 0.9,
+                                   usingSpringWithDamping: 0.7,
+                                   initialSpringVelocity: 0.2,
                                    options: [], animations: {
                                     self.txtUsername.center.x -= self.view.bounds.width
                                     self.txtPassword.center.x += self.view.bounds.width
+                                    self.lblStatus.center.y += self.view.bounds.width
         }, completion: nil)
+        
+        UIView.animate(withDuration: 2.5, delay: 2.5, options: [], animations: {
+            self.regNowimageView.alpha = 1.0
+        }, completion: nil)
+        
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
